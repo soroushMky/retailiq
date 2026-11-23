@@ -1,6 +1,9 @@
 # RetailIQ
 
 **Turn commerce data into confident decisions.**
+**[▶ Live demo](https://retailiq-cyan.vercel.app)** · [API docs](https://retailiq-6jgi.onrender.com/docs)
+
+> Hosted on free tiers: the first visit after a quiet period can take up to a minute while the API wakes up.
 An end-to-end e-commerce analytics product built on ~100K real orders from Olist, a Brazilian marketplace (2016–2018):
 a validated SQL data model, a typed REST API, an interactive dashboard with a 3D globe, and an AI assistant that can
 only answer from the same validated queries.
