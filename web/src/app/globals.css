@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+/* RetailIQ design tokens: each becomes a Tailwind class, e.g. bg-card, text-muted, border-line */
+@theme {
+  --color-page: #11192c;
+  --color-sidebar: #131a32;
+  --color-card: #18213c;
+  --color-active: #1c2646;
+  --color-line: #26304f;
+  --color-muted: #94a3b8;
+  --color-ink-on-accent: #0b1222;
+  --color-brand: #0eb582;
+  --color-warn: #fd7e4c;
+  --color-danger: #f87171;
+  --color-chart-blue: #374a86;
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+html { color-scheme: dark; }
+body { background: var(--color-page); }
+
+/* Recharts adds focus outlines on click; keyboard focus is handled by our own controls */
+.recharts-surface:focus, .recharts-wrapper:focus { outline: none; }
+
+/* Respect the OS "reduce motion" setting */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+/* ------------------------------------------------ ambient background */
+.aurora {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  will-change: transform;
+}
+.aurora-green {
+  width: 44rem; height: 44rem; top: -14rem; left: 8%;
+  background: radial-gradient(circle, #0eb582 0%, transparent 65%);
+  opacity: 0.32;
+  animation: drift-green 30s ease-in-out infinite alternate;
+}
+.aurora-blue {
+  width: 38rem; height: 38rem; top: 28%; right: -12rem;
+  background: radial-gradient(circle, #3b5bdb 0%, transparent 65%);
+  opacity: 0.30;
+  animation: drift-blue 36s ease-in-out infinite alternate;
+}
+.aurora-orange {
+  width: 30rem; height: 30rem; bottom: -16rem; left: 38%;
+  background: radial-gradient(circle, #fd7e4c 0%, transparent 65%);
+  opacity: 0.14;
+  animation: drift-orange 42s ease-in-out infinite alternate;
+}
+@keyframes drift-green  { to { transform: translate(18vw, 20vh) scale(1.2); } }
+@keyframes drift-blue   { to { transform: translate(-24vw, -14vh) scale(0.9); } }
+@keyframes drift-orange { to { transform: translate(-16vw, -26vh) scale(1.15); } }
+
+.dot-grid {
+  position: absolute;
+  inset: -28px;
+  background-image: radial-gradient(rgba(148, 163, 184, 0.14) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse at 50% 0%, black 25%, transparent 75%);
+  animation: grid-pan 24s linear infinite;
+}
+@keyframes grid-pan { to { transform: translate(28px, 28px); } }
+
+/* No ambient motion for people who turned motion off */
+@media (prefers-reduced-motion: reduce) {
+  .aurora, .dot-grid { animation: none; }
+}

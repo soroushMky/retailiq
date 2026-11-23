@@ -1,0 +1,27 @@
+# secrets
+.env
+.env.*
+!.env.example
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# data: raw CSVs come from Kaggle; the database is rebuilt by build.py
+data/raw/
+data/*.duckdb
+data/*.duckdb.wal
+
+# web
+web/node_modules/
+web/.next/
+web/out/
+web/next-env.d.ts
+web/*.tsbuildinfo
+
+# editors / OS
+.vscode/
+.DS_Store
+Thumbs.db
