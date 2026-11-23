@@ -51,6 +51,10 @@ def _validate(start: str, end: str, region: list[str]) -> tuple[str, ...]:
 
 
 # ---------------------------------------------------------------- general
+@app.get("/", include_in_schema=False)
+def root():
+    return RedirectResponse("/docs")
+
 @app.get("/api/health")
 def health():
     return {"status": "ok"}
