@@ -1,0 +1,8 @@
+# Only what the hosted API needs (no Streamlit, no test tools).
+# Keep duckdb on the SAME version you used to create data/serving/retailiq.duckdb.
+duckdb==2.0.1
+pandas>=2.2
+fastapi>=0.115
+uvicorn[standard]>=0.30
+pydantic>=2.7
+anthropic>=0.40

@@ -3,13 +3,18 @@ api/analytics.py
 Analytics layer for the API: SQL only, no web framework, no Streamlit.
 Every function returns plain Python data (dicts / lists) ready to be sent as JSON.
 """
+import os
 from functools import lru_cache
 from pathlib import Path
 
 import duckdb
 import pandas as pd
 
-DB_PATH = Path(__file__).resolve().parent.parent / "data" / "retailiq.duckdb"
+_ROOT = Path(__file__).resolve().parent.parent
+# Locally: the full database built by build.py. When hosted: RETAILIQ_DB=data/serving/retailiq.duckdb
+DB_PATH = Path(os.environ.get("RETAILIQ_DB") or _ROOT / "data" / "retailiq.duckdb")
+if not DB_PATH.is_absolute():
+    DB_PATH = _ROOT / DB_PATH
 
 REGION_NAMES = {
     "AC": "Acre", "AL": "Alagoas", "AP": "Amapá", "AM": "Amazonas", "BA": "Bahia",
