@@ -42,7 +42,7 @@ All figures are produced by the pipeline and checked by tests (full dataset unle
 ## Architecture
 
 ```mermaid
-flowchart LR
+flowchart TB
     A[9 raw Olist CSVs] -->|main.py| B[(DuckDB<br/>raw_* tables)]
     B -->|build.py runs sql/olist_to_standard/01–07| C[(std_* standard schema<br/>+ fct_orders)]
     C -->|14 data-quality checks<br/>11 baseline metrics| D{validated}
@@ -99,7 +99,7 @@ Requirements: Python 3.12+, Node 20+.
 ```powershell
 # 1. Data: download the "Brazilian E-Commerce Public Dataset by Olist" from Kaggle
 #    and put the 9 CSV files in data/raw/
-git clone https://github.com/<your-username>/retailiq.git
+git clone https://github.coms/soroushMky/retailiq.git
 cd retailiq
 python -m venv .venv
 .venv\Scripts\python.exe -m pip install -r requirements.txt
