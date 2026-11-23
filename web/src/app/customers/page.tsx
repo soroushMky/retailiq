@@ -253,7 +253,7 @@ export default function CustomersPage() {
                     <XAxis dataKey="orders_per_customer" tick={TICK} tickLine={false} axisLine={false}
                            tickFormatter={(v: string) => `${v} order${v === "1" ? "" : "s"}`} />
                     <YAxis scale="log" domain={[1, 100000]} ticks={[1, 10, 100, 1000, 10000, 100000]} allowDataOverflow
-                           width={56} tickFormatter={(v: number) => num(v)} />
+                           width={56} tickFormatter={(v: number) => (v >= 1000 ? `${v / 1000}K` : String(v))} />
                     <Tooltip cursor={{ fill: "#1C2646" }} content={<FrequencyTooltip />} />
                     <Bar dataKey="customers" fill="#374A86" radius={[6, 6, 0, 0]} animationDuration={700}>
                       <LabelList dataKey="customers" position="top" fill="#94A3B8" fontSize={11}
