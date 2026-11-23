@@ -12,7 +12,7 @@ from typing import Annotated, Literal
 
 from fastapi import FastAPI, HTTPException, Query
 from pydantic import BaseModel, Field
-
+from fastapi.responses import RedirectResponse
 
 def _load_env(path: Path) -> None:
     """Read KEY=value lines from .env into the environment (real environment variables win)."""
